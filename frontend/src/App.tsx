@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/layout/Navbar";
+import DashboardPage from "./pages/DashboardPage";
+import AuthPage from "./pages/AuthPage";
+import NotesPage from "./pages/NotesPage";
+import DocumentsPage from "./pages/DocumentsPage";
+import AIAssistantPage from "./pages/AIAssistantPage";
+import SearchPage from "./pages/SearchPage";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      {/* Fixed navbar at top */}
+      <Navbar />
+
+      {/* Page content is pushed down by padding-top so it doesn't go under navbar */}
+      <main className="pt-20 px-6 max-w-6xl mx-auto pb-10">
+        <Routes>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/notes" element={<NotesPage />} />
+          <Route path="/documents" element={<DocumentsPage />} />
+          <Route path="/ai" element={<AIAssistantPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/auth" element={<AuthPage />} />
+        </Routes>
+        {/* <DashboardPage /> */}
+        {/* <h1 className="text-2xl font-semibold mb-2">Dashboard (placeholder)</h1>
+        <p className="text-slate-400 text-sm">
+          This is temporary content just to test the layout.replace this
+          with the real Dashboard / Hero section next.
+        </p> */}
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;

@@ -10,6 +10,7 @@ import DocumentsPage from "./pages/DocumentsPage";
 import AIAssistantPage from "./pages/AIAssistantPage";
 import SearchPage from "./pages/SearchPage";
 import "./App.css";
+import NoteDetailPage from "./pages/NoteDetailPage";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -22,6 +23,7 @@ function App() {
       {/* Page content is pushed down by padding-top so it doesn't go under navbar */}
       <main className="pt-20 px-6 max-w-6xl mx-auto pb-10">
         <Routes>
+          <Route path="/notes/:id" element={<NoteDetailPage />} />
           <Route path="/" element={<DashboardPage />} />
           <Route path="/notes" element={<NotesPage />} />
           <Route path="/documents" element={<DocumentsPage />} />
